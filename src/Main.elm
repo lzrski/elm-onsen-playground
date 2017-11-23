@@ -1,8 +1,9 @@
 module Main exposing (main)
 
-import Html exposing (node, text)
-import Html.Attributes exposing (attribute)
+import Html exposing (div, node, text)
+import Html.Attributes exposing (attribute, class, id)
 import Html.Events exposing (on, onClick)
+import Onsen
 
 
 main : Program Never Model Msg
@@ -50,6 +51,17 @@ subscriptions =
 
 view : Model -> Html.Html Msg
 view model =
-    Html.node "ons-button"
-        [ onClick Increment ]
-        [ text <| "Click Me " ++ toString model ]
+    Onsen.page
+        [ id "page1"
+        ]
+        [ Onsen.toolbar []
+            [ div
+                [ class "center"
+                ]
+                [ text "Page 1"
+                ]
+            ]
+        , Onsen.button
+            [ onClick Increment ]
+            [ text <| "Click Me " ++ toString model ]
+        ]
